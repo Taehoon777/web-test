@@ -17,9 +17,29 @@ String uiName = request.getParameter("uiName");
 
 Connection con = DBCon.getCon();
 Statement stmt = con.createStatement();
-String sql = "UPDATE user" + uiNum;
+String sql = "UPDATE user_info\r\n" 
+		+ "SET UI_NAME='" + uiName +"',\r\n"
+		+ "UI_ID='" + uiId + "',\r\n"
+		+ "UI_PWD='" + uiPwd + "',\r\n"
+		+ "WHERE UI_NUM" + uiNum;
 
+int result = stmt.executeUpdate(sql);
 
+if(result==1){
+%>
+<script>
+		alter('정상적으로 업데이트 되었습니다.');
+		location.href ='/user/user-view.jsp?uiNum=<%=uiNum%>';
+</script>	
+<%	
+}else{
+%>
+<script>
+	alter('오류가 발생하였습니다.');
+	location.href ='/user/user-view.jsp?uiNum=<%=uiNum%>';
+</script>
+<%
+}
 %>
 </body>
 </html>

@@ -8,6 +8,7 @@ public class DBCon{
 	private final static String URL="jdbc:mariadb://localhost:3307/ezen";
 	private final static String CLASS_NAME="org.mariadb.jdbc.Driver";
 	
+	
 	static {
 		try {
 			Class.forName(CLASS_NAME);
